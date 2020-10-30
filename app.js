@@ -62,15 +62,15 @@ function askQuestions()
                 viewAllRolls();
                 break;
 
-            case "Add employee":
+            case "Add employee(s)":
                 addEmployee();
                 break;
 
-            case "Add Department":
+            case "Add Department(s)":
                 addDepartment();
                 break;
 
-            case "Add Role":
+            case "Add Role(s)":
                 addRolls();
                 break;
 
@@ -87,7 +87,7 @@ function askQuestions()
             //     removeRole();
             //     break;
 
-            case "Update employee role":
+            case "Update employee role(s)":
                 updateEmployeeRole();
                 break;
 
@@ -98,54 +98,54 @@ function askQuestions()
     });
 }
 
-// function viewAllEmployees() {
-//     connection.query("SELECT * FROM employee", function (err, data) {
-//         console.table(data);
-//         askQuestions();
-//     });
-// }
-
-//do I need to keep this in here with the line above?
 function viewAllEmployees() {
-    connection.query("SELECT * FROM employee", function(err, res){
-        if(err) throw err;
-        for(var i = 0; i < res.length; i++) {
-            console.log(res[i].first_name + " " + res[i].last_name);
-        }
+    connection.query("SELECT * FROM employee", function (err, data) {
+        console.table(data);
+        askQuestions();
     });
 }
 
-// function viewAllDepartments() {
-//     connection.query("SELECT * FROM department", function (err, data) {
-//         console.table(data);
-//         askQuestions();
+//do I need to keep this in here with the line above?
+// function viewAllEmployees() {
+//     connection.query("SELECT * FROM employee", function(err, res){
+//         if(err) throw err;
+//         for(var i = 0; i < res.length; i++) {
+//             console.log(res[i].first_name + " " + res[i].last_name + " " + role_id + " " + manager_id);
+//         }
 //     });
 // }
 
 function viewAllDepartments() {
-    connection.query("SELECT * FROM department", function(err, res){
-        if(err) throw err;
-        for(var i = 0; i < res.length; i++) {
-            console.log(res[i].name);
-        }
+    connection.query("SELECT * FROM department", function (err, data) {
+        console.table(data);
+        askQuestions();
     });
 }
 
-// function viewAllRolls() {
-//     connection.query("SELECT * FROM role", function (eer, data) {
-//         console.table(data);
-//         askQuestions();
+// function viewAllDepartments() {
+//     connection.query("SELECT * FROM department", function(err, res){
+//         if(err) throw err;
+//         for(var i = 0; i < res.length; i++) {
+//             console.log(res[i].name);
+//         }
 //     });
 // }
 
 function viewAllRolls() {
-    connection.query("SELECT * FROM role", function(err, res){
-        if(err) throw err;
-        for(var i = 0; i < res.length; i++) {
-            console.log(res[i].title + " " + department_id + " " + salary);
-        }
+    connection.query("SELECT * FROM role", function (eer, data) {
+        console.table(data);
+        askQuestions();
     });
 }
+
+// function viewAllRolls() {
+//     connection.query("SELECT * FROM role", function(err, res){
+//         if(err) throw err;
+//         for(var i = 0; i < res.length; i++) {
+//             console.log(res[i].title + " " + department_id + " " + salary);
+//         }
+//     });
+// }
 
 function addEmployee() {
     var arrayRoleList = rolesArray();
@@ -175,12 +175,6 @@ function addEmployee() {
             message: "Please state the employees ID/ID role.",
             name: "roleIdNum"
         }
-        // {
-        //     type: "number",
-        //     message: "Please state the employees manager ID/ID role.",
-        //     name: "managerIdNum" 
-        
-        // },
     ])
     .then(function(res) 
     {
@@ -278,11 +272,4 @@ function updateEmployeeRole() {
         });
         askQuestions();
     });
-
-function rolesArray() {
-    return connection.query('SELECT title from roles', function(err,res){
-        if(err) recieveError(err);
-        return (res);
-    });
-}
 }
