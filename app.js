@@ -156,12 +156,12 @@ function addEmployee() {
         {
             type: "input",
             message: "Please state the employees first name.",
-            name: "firstName",
+            name: "firstName"
         },
         {
             type: "input",
             message: "Please state the employees last name.",
-            name: "lastName",
+            name: "lastName"
         },
         {
             type: "list",
@@ -181,17 +181,18 @@ function addEmployee() {
         connection.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [res.firstName, res.lastName, res.roleId, res.managerId], function(err, data) 
         {
             if (err) throw err;
+            console.log(res.affectedRows + " Employee added!\n");
             console.table("It worked!");
             askQuestions();
         });
     });
 
-    function rolesArray() {
-    return connection.query('SELECT title from roles', function(err,res){
-        if(err) recieveError(err);
-        return (res);
-    });
-}
+//     function rolesArray() {
+//     return connection.query('SELECT title from roles', function(err,res){
+//         if(err) recieveError(err);
+//         return (res);
+//     });
+
 }
 
 function addDepartment() {
@@ -212,10 +213,12 @@ function addDepartment() {
         connection.query('INSERT INTO department (name) VALUES (?)', [res.department], function(err, data) 
         {
             if (err) throw err;
-            console.table("It worked!");
+            console.log(res.affectedRows + " Department added!\n");
+            console.table(data);
             askQuestions();
         });
     });
+    
 }
 
 function addRolls() {
@@ -240,6 +243,7 @@ function addRolls() {
     {
         connection.query("INSERT INTO roles (title, salary, department_id) values (?, ?, ?)", [res.title, res.salary, res.department_id], function (err, data) 
         {
+            console.log(res.affectedRows + " Role Added!\n");
             console.table(data);
         });
         askQuestions();
@@ -268,6 +272,7 @@ function updateEmployeeRole() {
     {
         connection.query("UPDATE employee SET role_id = ? WHERE first_name, last_name = (?,?)", [res.role_id, res.name], function (err, data) 
         {
+            console.log(res.affectedRows + " Employee Updated!\n");
             console.table(data);
         });
         askQuestions();
