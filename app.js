@@ -15,7 +15,11 @@ connection.connect(function (err)
     if (err) throw err;
     console.log("connected as id " + connection.threadId + "\n");
     askQuestions();
+    viewAllRolls();
+    viewAllDepartments();
+    viewAllEmployees();
 });
+
 // First I have to call the questions within the circumstances I wish to create.
 // To do this, I first call in the inquirer JSON module and link it to a prompt method.
 function askQuestions() 
@@ -101,6 +105,16 @@ function viewAllEmployees() {
     });
 }
 
+//do I need to keep this in here with the line above?
+function viewAllEmployees() {
+    connection.query("SELECT * FROM employee", function(err, res){
+        if(err) throw err;
+        for(var i = 0; i < res.length; i++) {
+            console.log(res[i].first_name + " " + res[i].last_name);
+        }
+    });
+}
+
 function viewAllDepartments() {
     connection.query("SELECT * FROM department", function (err, data) {
         console.table(data);
@@ -108,10 +122,28 @@ function viewAllDepartments() {
     });
 }
 
+function viewAllDepartments() {
+    connection.query("SELECT * FROM department", function(err, res){
+        if(err) throw err;
+        for(var i = 0; i < res.length; i++) {
+            console.log(res[i].name);
+        }
+    });
+}
+
 function viewAllRolls() {
     connection.query("SELECT * FROM role", function (eer, data) {
         console.table(data);
         askQuestions();
+    });
+}
+
+function viewAllRolls() {
+    connection.query("SELECT * FROM role", function(err, res){
+        if(err) throw err;
+        for(var i = 0; i < res.length; i++) {
+            console.log(res[i].title + " " + department_id + " " + salary);
+        }
     });
 }
 
