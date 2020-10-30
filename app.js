@@ -33,14 +33,14 @@ function askQuestions()
         'View all employees',
         'View all departments',
         'View all roles',
-        'Add employee',
-        'Add department',
-        'Add role',
+        'Add employee(s)',
+        'Add department(s)',
+        'Add role(s)',
         // Didn't get enough time to add these into the homeowrk, but it's there for later to try it. and/or finish it for practice.
         // 'Remove employee',
         // 'Remove department',
         // 'Remove role',
-        "Update employee role",
+        "Update employee role(s)",
         'Exit'
         ]
 
@@ -89,10 +89,6 @@ function askQuestions()
 
             case "Update employee role(s)":
                 updateEmployeeRole();
-                break;
-
-            default:
-                connection.end();
                 break;
         }
     });
@@ -277,4 +273,5 @@ function updateEmployeeRole() {
         });
         askQuestions();
     });
+    connection.end();
 }
