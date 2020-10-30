@@ -48,7 +48,7 @@ function askQuestions()
     })
     .then(activate => 
         {
-        switch (activate.methods) 
+        switch (activate.listOptions) 
         {
             case "View all employees":
                 viewAllEmployees();
@@ -183,14 +183,15 @@ function addEmployee() {
         });
     });
 
-//     function rolesArray() {
-//     return connection.query('SELECT title from roles', function(err,res){
-//         if(err) recieveError(err);
-//         return (res);
-//     });
-
 }
 
+    function rolesArray() {
+    return connection.query('SELECT title from roles', function(err,res){
+        if(err) recieveError(err);
+        return (res);
+    });
+    }
+    
 function addDepartment() {
     inquirer.prompt([
         {
