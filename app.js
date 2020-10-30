@@ -16,8 +16,8 @@ connection.connect(function (err)
     console.log("connected as id " + connection.threadId + "\n");
     askQuestions();
     viewAllRolls();
-    viewAllDepartments();
-    viewAllEmployees();
+    // viewAllDepartments();
+    // viewAllEmployees();
 });
 
 // First I have to call the questions within the circumstances I wish to create.
@@ -182,7 +182,7 @@ function addEmployee() {
         {
             if (err) throw err;
             console.log(res.affectedRows + " Employee added!\n");
-            console.table("It worked!");
+            console.table(data);
             askQuestions();
         });
     });
