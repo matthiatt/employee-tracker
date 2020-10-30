@@ -42,9 +42,9 @@ function askQuestions()
 
     // Then after the last step, I declared a promise method.
     })
-    .then(ansResp => 
+    .then(activate => 
         {
-        switch (ansResp.methods) 
+        switch (activate.methods) 
         {
             case "View all employees":
                 viewAllEmployees();
@@ -116,7 +116,11 @@ function viewAllRolls() {
 }
 
 function addEmployee() {
+    var arrayRoleList = rolesArray();
+    console.log(arrayRoleList);
+    console.log("You need to update or insert information.");
     inquirer.prompt([
+        
         {
             type: "input",
             message: "Please state the employees first name.",
@@ -155,6 +159,13 @@ function addEmployee() {
             askQuestions();
         });
     });
+
+    function rolesArray() {
+    return connection.query('SELECT title from roles', function(err,res){
+        if(err) recieveError(err);
+        return (res);
+    });
+}
 }
 
 function addDepartment() {
@@ -211,10 +222,13 @@ function addRolls() {
 }
 
 function updateEmployeeRole() {
+    var arrayRoleList = rolesArray();
+    console.log(arrayRoleList);
+    console.log("You need to update or insert information.");
     inquirer.prompt([
         {
             type: "list",
-            name: "upDateNames",
+            name: "updateEmployee",
             message: "Please state which employee you would like to update.",
             list: ["Matt Hiatt", "Devon Gram", "Kristy Bonachini", "Greg Oostman", "Jordan Luxinlurburg", "Jerrod Davenport", "Makayla McHolms", "Sarah Koliniski", "Amy Rudenburg", "Tim Borre", "Chris Vishimi", "Maddy Bubbz", "Sage Kaveliac", "Kevin Mosser", "Sarah Test", "Amy Test", "Tim Test", "Chris Test", "Maddi Test", "Sage Test", "Kevin Test"]
         }, 
@@ -233,4 +247,10 @@ function updateEmployeeRole() {
         askQuestions();
     });
 
+function rolesArray() {
+    return connection.query('SELECT title from roles', function(err,res){
+        if(err) recieveError(err);
+        return (res);
+    });
+}
 }
