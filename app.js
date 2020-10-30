@@ -98,12 +98,12 @@ function askQuestions()
     });
 }
 
-function viewAllEmployees() {
-    connection.query("SELECT * FROM employee", function (err, data) {
-        console.table(data);
-        askQuestions();
-    });
-}
+// function viewAllEmployees() {
+//     connection.query("SELECT * FROM employee", function (err, data) {
+//         console.table(data);
+//         askQuestions();
+//     });
+// }
 
 //do I need to keep this in here with the line above?
 function viewAllEmployees() {
@@ -115,12 +115,12 @@ function viewAllEmployees() {
     });
 }
 
-function viewAllDepartments() {
-    connection.query("SELECT * FROM department", function (err, data) {
-        console.table(data);
-        askQuestions();
-    });
-}
+// function viewAllDepartments() {
+//     connection.query("SELECT * FROM department", function (err, data) {
+//         console.table(data);
+//         askQuestions();
+//     });
+// }
 
 function viewAllDepartments() {
     connection.query("SELECT * FROM department", function(err, res){
@@ -131,12 +131,12 @@ function viewAllDepartments() {
     });
 }
 
-function viewAllRolls() {
-    connection.query("SELECT * FROM role", function (eer, data) {
-        console.table(data);
-        askQuestions();
-    });
-}
+// function viewAllRolls() {
+//     connection.query("SELECT * FROM role", function (eer, data) {
+//         console.table(data);
+//         askQuestions();
+//     });
+// }
 
 function viewAllRolls() {
     connection.query("SELECT * FROM role", function(err, res){
