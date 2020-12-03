@@ -16,7 +16,7 @@ insert into role (title, salary, department_id) values
 ("I.T Manager", 73500, 2),
 ("e-commerce manager", 56000, 2),
 ("Data Entry", 30000, 2),
-("SQL Database Admi  n", 68475, 2),
+("SQL Database Admin", 68475, 2),
 ("Prodcut Specialist", 66000, 2),
 ("Jr. Dev", 50000, 2),
 ("Magento Specialist", 100000, 2),
